@@ -1,0 +1,6 @@
+// Exemplo de uso de requisição Curl para transrcição de áudio no Deepgam usando o modelo Whisper da OpenAi.
+
+curl  --request POST  --data-binary @audio.mp3  --url 'https://api.deepgram.com/v1/listen?model=whisper' --output file.json
+
+Mais informações: https://blog.deepgram.com/how-to-use-whisper-openais-speech-recognition-model-in-1-minute/
+// Pelo teste que fiz não parece que estão usando o modelo large do Whisper
