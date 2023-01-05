@@ -1,10 +1,10 @@
-*/
+/*
 Este código JavaScript foi projetado para ser usado em páginas do YouTube para adicionar a capacidade de pular anúncios automaticamente. Ele define duas funções: youtubeAutoSkip e detectWebsite. A função youtubeAutoSkip é chamada quando o usuário está em uma página de vídeo do YouTube e toma o corpo da página HTML como entrada. Ela cria um intervalo de tempo que verifica a cada segundo se o vídeo atual é diferente do vídeo original que foi carregado na página e, se for, recarrega a página.
 
 A função também configura um evento de pressionar uma tecla para permitir que o usuário altere o estado de "pular" (skip) apertando o * tecla. Ele armazena o estado de "pular" em uma variável de armazenamento local do navegador e também configura outro intervalo de tempo que verifica a cada segundo se o tempo atual do vídeo é maior ou menor do que a duração total do vídeo em mais de dois segundos. Se for, ele pula o anúncio pressionando o botão de pular anúncio na página.
 
 A função detectWebsite é chamada quando a página é carregada e verifica se o usuário está em um site do YouTube. Se estiver, ela chama a função youtubeAutoSkip passando o corpo da página HTML e o ID do vídeo original como parâmetros.
-/*
+*/
 function youtubeAutoSkip(yt_body, original_video_id){
     let skip = localStorage.getItem("skip");
     if(skip == null){
