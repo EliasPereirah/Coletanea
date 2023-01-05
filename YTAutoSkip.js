@@ -1,4 +1,3 @@
-
 function youtubeAutoSkip(yt_body, original_video_id){
     let skip = localStorage.getItem("skip");
     if(skip == null){
@@ -14,11 +13,13 @@ function youtubeAutoSkip(yt_body, original_video_id){
                 skip = !skip;
                 localStorage.setItem("skip", skip);
                 let can_skip = skip ? 'sim' : 'não';
-                console.log("Skpping? : "+can_skip);
+                console.log("Skpping? "+can_skip);
              }
         }
 
     }
+    
+
     let regex = /lengthSeconds":"(\d+)"/;
     let found = yt_body.innerHTML.match(regex);
     
@@ -34,7 +35,9 @@ function youtubeAutoSkip(yt_body, original_video_id){
 
       if(original_video_id != video_id){
           if(currentURL.match("watch") != null){
-            location.reload(); // necessary because in another way would not get the correct total_duration
+            if(skip){
+                location.reload(); // necessary because in another way would not get the correct total_duration
+            }
             return false;
           }else{
            // console.log('This page is not beying reload because it is not a video page');
@@ -53,6 +56,7 @@ function youtubeAutoSkip(yt_body, original_video_id){
            if(video[0].duration < (total_duration - 2) | video[0].duration > (total_duration + 2)){
             if(skip){
                 video[0].currentTime = 72000;
+                document.querySelectorAll(".ytp-ad-skip-button.ytp-button")[0].click();
             }
             
            }
@@ -63,6 +67,7 @@ function youtubeAutoSkip(yt_body, original_video_id){
  
  }
 
+ 
 
 function detectWebsite() {
     if(document.URL.search('youtube.com') != -1){
@@ -79,3 +84,5 @@ function detectWebsite() {
         youtubeAutoSkip(yt_body, original_video_id);
     }
 }
+
+detectWebsite();
