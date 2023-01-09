@@ -1,0 +1,5 @@
+<Files ~ "\.swp|\.save$">
+ Order Allow,Deny
+ Deny from All
+</Files>
+# block .swp or .save files
